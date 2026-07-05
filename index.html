@@ -3,22 +3,25 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AVANT GOLF × Rose｜短影音運營企劃</title>
+<title>AVANT GOLF｜雙帳號分工企劃</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;800;900&family=Noto+Sans+TC:wght@400;500;700;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 <style>
   :root{
-    --ink:#0E2620;--ink-2:#13332A;--ink-3:#0A1C17;
-    --bone:#F3EFE4;--bone-2:#E4DECC;--sage:#9FB4A8;--sage-dim:#6F857A;
-    --lime:#C8F23C;--gold:#E6C076;
-    --line:rgba(243,239,228,0.14);--line-2:rgba(243,239,228,0.30);
+    /* 清新淺藍色系 */
+    --bg:#EAF5FC;--bg-2:#DCEEF9;
+    --ink:#0E2E45;--ink-2:#123A57;--ink-3:#F7FBFD;
+    --paper:#FFFFFF;--paper-2:#F1F9FD;
+    --slate:#5A7A91;--slate-dim:#8CA6B8;
+    --teal:#0FA9A6;--coral:#FF8F6B;
+    --line:rgba(14,46,69,0.12);--line-2:rgba(14,46,69,0.24);
   }
   *{margin:0;padding:0;box-sizing:border-box}
-  html,body{height:100%;background:#070f0c;overflow:hidden;font-family:"Noto Sans TC",sans-serif}
+  html,body{height:100%;background:#cfe6f4;overflow:hidden;font-family:"Noto Sans TC",sans-serif}
   body{display:flex;align-items:center;justify-content:center}
   #scaler{position:relative}
-  #stage{width:1280px;height:720px;position:relative;background:var(--ink);color:var(--bone);overflow:hidden;transform-origin:top left}
+  #stage{width:1280px;height:720px;position:relative;background:var(--bg);color:var(--ink);overflow:hidden;transform-origin:top left}
 
   .slide{position:absolute;inset:0;padding:64px 84px;display:none;flex-direction:column;opacity:0;transition:opacity .5s ease}
   .slide.active{display:flex;opacity:1}
@@ -29,196 +32,167 @@
   @keyframes rise{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
 
   .aim{position:absolute;left:0;right:0;top:50%;height:1px;background:linear-gradient(90deg,transparent,var(--line-2) 12%,var(--line-2) 88%,transparent);pointer-events:none}
-  .aim::after{content:"";position:absolute;right:84px;top:-4px;width:9px;height:9px;border:1px solid var(--lime);border-radius:50%;background:rgba(200,242,60,.15)}
+  .aim::after{content:"";position:absolute;right:84px;top:-4px;width:9px;height:9px;border:1px solid var(--teal);border-radius:50%;background:rgba(15,169,166,.15)}
 
-  .eyebrow{font-family:"Archivo",sans-serif;font-weight:800;font-size:13px;letter-spacing:.22em;text-transform:uppercase;color:var(--lime);display:flex;align-items:center;gap:12px}
-  .eyebrow .zh{font-family:"Noto Sans TC";font-weight:700;letter-spacing:.12em;color:var(--sage)}
-  .eyebrow::before{content:"";width:26px;height:2px;background:var(--lime);display:inline-block}
+  .eyebrow{font-family:"Archivo",sans-serif;font-weight:800;font-size:13px;letter-spacing:.22em;text-transform:uppercase;color:var(--teal);display:flex;align-items:center;gap:12px}
+  .eyebrow .zh{font-family:"Noto Sans TC";font-weight:700;letter-spacing:.12em;color:var(--slate)}
+  .eyebrow::before{content:"";width:26px;height:2px;background:var(--teal);display:inline-block}
 
   h1{font-family:"Noto Sans TC";font-weight:900;line-height:1.06;letter-spacing:-.01em}
   h2{font-family:"Noto Sans TC";font-weight:900;font-size:42px;line-height:1.12;letter-spacing:-.01em;margin-top:18px}
-  h2 .lime{color:var(--lime)}
-  .lead{font-size:18px;line-height:1.7;color:var(--bone-2);font-weight:400;max-width:62ch}
-  .muted{color:var(--sage)}
+  h2 .teal{color:var(--teal)}
+  .lead{font-size:18px;line-height:1.7;color:var(--ink-2);font-weight:400;max-width:62ch;opacity:.82}
+  .muted{color:var(--slate)}
   .mono{font-family:"Space Mono",monospace}
   .topbar{display:flex;justify-content:space-between;align-items:baseline}
-  .kicker-num{font-family:"Space Mono",monospace;font-size:13px;color:var(--sage-dim);letter-spacing:.1em}
+  .kicker-num{font-family:"Space Mono",monospace;font-size:13px;color:var(--slate-dim);letter-spacing:.1em}
   .head-block{margin-bottom:30px}
 
   /* cover */
-  .cover{justify-content:center;background:radial-gradient(120% 90% at 85% 110%,rgba(200,242,60,.10),transparent 55%),radial-gradient(90% 70% at 10% -10%,rgba(230,192,118,.08),transparent 60%),var(--ink)}
-  .cover h1{font-size:74px}
-  .cover .sub{font-family:"Archivo";font-weight:700;letter-spacing:.04em;color:var(--sage);font-size:20px;margin-top:6px}
-  .cover .meta{margin-top:54px;display:flex;gap:34px;font-family:"Space Mono",monospace;font-size:13px;color:var(--sage);letter-spacing:.06em}
-  .cover .meta b{color:var(--bone);font-weight:700}
-  .tag{display:inline-flex;align-items:center;gap:9px;font-family:"Archivo";font-weight:800;font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--ink);background:var(--lime);padding:7px 14px;border-radius:2px;width:fit-content}
+  .cover{justify-content:center;background:radial-gradient(120% 90% at 85% 110%,rgba(15,169,166,.14),transparent 55%),radial-gradient(90% 70% at 10% -10%,rgba(255,143,107,.10),transparent 60%),var(--bg)}
+  .cover h1{font-size:70px}
+  .cover .sub{font-family:"Archivo";font-weight:700;letter-spacing:.04em;color:var(--slate);font-size:20px;margin-top:6px}
+  .cover .meta{margin-top:54px;display:flex;gap:34px;font-family:"Space Mono",monospace;font-size:13px;color:var(--slate);letter-spacing:.06em}
+  .cover .meta b{color:var(--ink);font-weight:700}
+  .tag{display:inline-flex;align-items:center;gap:9px;font-family:"Archivo";font-weight:800;font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-3);background:var(--teal);padding:7px 14px;border-radius:2px;width:fit-content}
   .flagline{position:absolute;left:84px;right:84px;bottom:120px;height:1px;background:var(--line-2)}
-  .flagline span{position:absolute;right:0;top:-22px;width:1px;height:22px;background:var(--lime)}
-  .flagline span::before{content:"";position:absolute;top:0;left:1px;border-style:solid;border-width:0 0 9px 16px;border-color:transparent transparent transparent var(--lime)}
+  .flagline span{position:absolute;right:0;top:-22px;width:1px;height:22px;background:var(--teal)}
+  .flagline span::before{content:"";position:absolute;top:0;left:1px;border-style:solid;border-width:0 0 9px 16px;border-color:transparent transparent transparent var(--teal)}
 
   /* roadmap / steps */
   .rmid{flex:1;display:flex;align-items:center}
   .steps{display:flex;align-items:flex-start;gap:0;width:100%}
   .nstep{flex:1;text-align:center;position:relative;padding:0 14px}
-  .nstep .sn{font-family:"Archivo";font-weight:900;font-size:14px;color:var(--ink);background:var(--lime);width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto}
+  .nstep .sn{font-family:"Archivo";font-weight:900;font-size:14px;color:var(--ink-3);background:var(--teal);width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto}
   .nstep b{display:block;font-size:18px;font-weight:900;margin-top:18px}
-  .nstep small{display:block;font-size:13px;color:var(--sage);margin-top:8px;line-height:1.5}
+  .nstep small{display:block;font-size:13px;color:var(--slate);margin-top:8px;line-height:1.5}
   .nstep:not(:last-child)::after{content:"";position:absolute;top:19px;left:62%;right:-38%;height:2px;background:repeating-linear-gradient(90deg,var(--line-2) 0 6px,transparent 6px 12px)}
-  .endline{margin-top:0;margin-bottom:2px;font-family:"Noto Sans TC";font-weight:900;letter-spacing:.01em;font-size:24px;color:var(--bone)}
-  .endline .lime{color:var(--lime)}
+  .endline{margin-top:0;margin-bottom:2px;font-family:"Noto Sans TC";font-weight:900;letter-spacing:.01em;font-size:24px;color:var(--ink)}
+  .endline .teal{color:var(--teal)}
 
   /* cards */
   .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;flex:1}
   .grid2{display:grid;grid-template-columns:1fr 1fr;gap:22px;flex:1}
-  .card{background:var(--ink-2);border:1px solid var(--line);border-radius:10px;padding:24px 22px;display:flex;flex-direction:column}
-  .card .ct{font-family:"Archivo";font-weight:800;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold)}
+  .card{background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:24px 22px;display:flex;flex-direction:column;box-shadow:0 6px 18px rgba(14,46,69,0.05)}
+  .card .ct{font-family:"Archivo";font-weight:800;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--coral)}
   .card .cz{font-weight:900;font-size:21px;margin-top:7px;letter-spacing:-.01em}
-  .card .cmono{font-family:"Space Mono",monospace;font-size:12px;color:var(--sage-dim);margin-top:2px;word-break:break-all}
+  .card .cmono{font-family:"Space Mono",monospace;font-size:12px;color:var(--slate-dim);margin-top:2px;word-break:break-all}
   .card ul{list-style:none;margin-top:16px;display:flex;flex-direction:column;gap:9px}
-  .card li{font-size:14.5px;line-height:1.5;color:var(--bone-2);padding-left:16px;position:relative}
-  .card li::before{content:"";position:absolute;left:0;top:9px;width:5px;height:5px;background:var(--lime);border-radius:50%}
-  .card .pain{margin-top:auto;padding-top:14px;border-top:1px solid var(--line);font-size:13px;color:var(--sage)}
-  .card .pain b{color:var(--gold);font-weight:700}
+  .card li{font-size:14.5px;line-height:1.5;color:var(--ink-2);padding-left:16px;position:relative;opacity:.86}
+  .card li::before{content:"";position:absolute;left:0;top:9px;width:5px;height:5px;background:var(--teal);border-radius:50%}
+  .card .pain{margin-top:auto;padding-top:14px;border-top:1px solid var(--line);font-size:13px;color:var(--slate)}
+  .card .pain b{color:var(--coral);font-weight:700}
   .stat-row{display:flex;gap:18px;margin-top:14px}
-  .stat b{font-family:"Archivo";font-weight:900;font-size:26px;color:var(--bone);line-height:1}
-  .stat small{display:block;font-size:11px;color:var(--sage-dim);margin-top:4px;letter-spacing:.04em}
+  .stat b{font-family:"Archivo";font-weight:900;font-size:26px;color:var(--ink);line-height:1}
+  .stat small{display:block;font-size:11px;color:var(--slate-dim);margin-top:4px;letter-spacing:.04em}
 
   /* diagnosis */
   .rows{display:flex;flex-direction:column;gap:14px;flex:1;justify-content:center}
-  .drow{display:grid;grid-template-columns:1fr 44px 1.15fr;align-items:center;gap:8px;background:var(--ink-2);border:1px solid var(--line);border-radius:10px;padding:20px 24px}
-  .drow .prob{font-weight:700;font-size:18px;color:var(--bone)}
-  .drow .prob span{display:block;font-size:13px;color:var(--sage);font-weight:400;margin-top:3px}
-  .arrow{color:var(--lime);font-size:22px;text-align:center;font-family:"Space Mono"}
-  .drow .sol{font-size:16px;color:var(--bone-2);line-height:1.5}
-  .drow .sol b{color:var(--lime);font-weight:700}
+  .drow{display:grid;grid-template-columns:1fr 44px 1.15fr;align-items:center;gap:8px;background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:20px 24px;box-shadow:0 6px 18px rgba(14,46,69,0.05)}
+  .drow .prob{font-weight:700;font-size:18px;color:var(--ink)}
+  .drow .prob span{display:block;font-size:13px;color:var(--slate);font-weight:400;margin-top:3px}
+  .arrow{color:var(--teal);font-size:22px;text-align:center;font-family:"Space Mono"}
+  .drow .sol{font-size:16px;color:var(--ink-2);line-height:1.5;opacity:.88}
+  .drow .sol b{color:var(--teal);font-weight:700}
 
   /* benchmark */
-  .bmlink{font-family:"Noto Sans TC";font-weight:900;font-size:23px;color:var(--lime);text-decoration:none;display:inline-flex;align-items:center;gap:9px;width:fit-content;letter-spacing:.01em;border-bottom:2px solid rgba(200,242,60,.35);padding-bottom:3px}
-  .bmlink:hover{color:#d9ff63;border-color:var(--lime)}
+  .bmlink{font-family:"Noto Sans TC";font-weight:900;font-size:23px;color:var(--teal);text-decoration:none;display:inline-flex;align-items:center;gap:9px;width:fit-content;letter-spacing:.01em;border-bottom:2px solid rgba(15,169,166,.35);padding-bottom:3px}
+  .bmlink:hover{color:#0c8886;border-color:var(--teal)}
   .bmlink .ext{font-family:"Space Mono";font-size:15px;opacity:.85}
-  .bm .who{font-weight:700;font-size:16px;margin-top:12px;color:var(--bone)}
-  .bm .views{font-family:"Space Mono",monospace;color:var(--gold);font-size:12.5px;margin-top:3px}
-  .steal{margin-top:14px;background:rgba(200,242,60,.08);border-left:2px solid var(--lime);padding:12px 14px;font-size:14px;line-height:1.55;color:var(--bone-2)}
-  .steal b{color:var(--lime)}
+  .bm .who{font-weight:700;font-size:16px;margin-top:12px;color:var(--ink)}
+  .bm .views{font-family:"Space Mono",monospace;color:var(--coral);font-size:12.5px;margin-top:3px}
+  .steal{margin-top:14px;background:rgba(15,169,166,.08);border-left:2px solid var(--teal);padding:12px 14px;font-size:14px;line-height:1.55;color:var(--ink-2)}
+  .steal b{color:var(--teal)}
 
   /* train flow */
   .train{flex:1;display:flex;flex-direction:column;justify-content:center;gap:24px}
   .flow3{display:flex;align-items:center;justify-content:center;gap:0}
-  .loco{background:var(--lime);color:var(--ink);border-radius:12px;padding:20px 24px;min-width:216px;display:flex;flex-direction:column;justify-content:center}
+  .loco{background:var(--teal);color:var(--ink-3);border-radius:12px;padding:20px 24px;min-width:216px;display:flex;flex-direction:column;justify-content:center}
   .loco .lt{font-family:"Archivo";font-weight:800;font-size:11px;letter-spacing:.16em;text-transform:uppercase}
   .loco .lz{font-weight:900;font-size:25px;margin-top:4px;letter-spacing:-.01em}
-  .loco .ls{font-size:12.5px;margin-top:4px;opacity:.82}
+  .loco .ls{font-size:12.5px;margin-top:4px;opacity:.85}
+  .loco.alt{background:var(--coral)}
   .lk{flex:0 0 104px;display:flex;flex-direction:column;align-items:center;justify-content:center}
-  .lk .ar{font-family:"Space Mono";font-size:24px;color:var(--lime)}
-  .lk .lkl{font-size:11px;color:var(--sage);margin-top:5px;letter-spacing:.1em}
+  .lk .ar{font-family:"Space Mono";font-size:24px;color:var(--teal)}
+  .lk .lkl{font-size:11px;color:var(--slate);margin-top:5px;letter-spacing:.1em}
   .colnodes{display:flex;flex-direction:column;gap:10px;justify-content:center}
-  .node{background:var(--ink-2);border:1px solid var(--line);border-radius:10px;padding:13px 18px;min-width:182px}
+  .node{background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:13px 18px;min-width:182px;box-shadow:0 6px 18px rgba(14,46,69,0.05)}
   .node b{font-weight:700;font-size:15.5px;display:block}
-  .node small{font-size:11.5px;color:var(--sage)}
-  .kpi{display:flex;border:1px solid var(--line);border-radius:10px;overflow:hidden}
+  .node small{font-size:11.5px;color:var(--slate)}
+  .kpi{display:flex;border:1px solid var(--line);border-radius:10px;overflow:hidden;background:var(--paper)}
   .kpi .step{flex:1;padding:15px 20px;border-right:1px solid var(--line)}
   .kpi .step:last-child{border-right:0}
-  .kpi .step .n{font-family:"Space Mono";color:var(--lime);font-size:12px}
+  .kpi .step .n{font-family:"Space Mono";color:var(--teal);font-size:12px}
   .kpi .step b{display:block;font-weight:700;font-size:16px;margin-top:4px}
-  .kpi .step small{font-size:12px;color:var(--sage);line-height:1.4;display:block;margin-top:3px}
-  .pubnote{font-size:13px;color:var(--sage);border-left:2px solid var(--gold);padding-left:13px;line-height:1.6}
-  .pubnote b{color:var(--gold);font-weight:700}
+  .kpi .step small{font-size:12px;color:var(--slate);line-height:1.4;display:block;margin-top:3px}
+  .pubnote{font-size:13px;color:var(--slate);border-left:2px solid var(--coral);padding-left:13px;line-height:1.6}
+  .pubnote b{color:var(--coral);font-weight:700}
 
-  /* content mix */
+  /* content mix / two engines */
   .mixwrap{flex:1;display:flex;flex-direction:column;justify-content:center;gap:22px}
-  .mixbar{display:flex;height:108px;border-radius:12px;overflow:hidden;border:1px solid var(--line)}
+  .enginebar{display:flex;height:108px;border-radius:12px;overflow:hidden;border:1px solid var(--line)}
   .seg{display:flex;flex-direction:column;justify-content:flex-end;padding:16px 20px;position:relative}
-  .seg .pct{font-family:"Archivo";font-weight:900;font-size:28px;line-height:1}
+  .seg .pct{font-family:"Archivo";font-weight:900;font-size:24px;line-height:1}
   .seg .lab{font-size:13.5px;margin-top:6px;font-weight:700}
-  .seg.golf{flex:0 0 70%;background:var(--lime);color:var(--ink)}
-  .seg.yoga{flex:0 0 25%;background:var(--gold);color:var(--ink)}
-  .seg.talk{flex:0 0 5%;background:var(--ink-2);color:var(--bone);border-left:1px solid var(--line)}
-  .seg.talk .pct{font-size:17px}
-  .mixcap{font-size:13px;color:var(--sage);margin-top:-8px}
-  .mixcap b{color:var(--lime);font-weight:700}
+  .seg.brand{flex:0 0 50%;background:var(--teal);color:var(--ink-3)}
+  .seg.persona{flex:0 0 50%;background:var(--coral);color:var(--ink-3)}
+  .mixcap{font-size:13px;color:var(--slate);margin-top:-8px}
+  .mixcap b{color:var(--teal);font-weight:700}
   .principles{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
-  .pri{background:var(--ink-2);border:1px solid var(--line);border-radius:10px;padding:18px}
-  .pri .pn{font-family:"Space Mono";color:var(--lime);font-size:12px}
+  .pri{background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:18px;box-shadow:0 6px 18px rgba(14,46,69,0.05)}
+  .pri .pn{font-family:"Space Mono";color:var(--teal);font-size:12px}
   .pri b{display:block;font-size:16px;font-weight:700;margin-top:8px}
-  .pri small{font-size:12.5px;color:var(--sage);line-height:1.5;display:block;margin-top:5px}
-  .prodnote{font-size:12.5px;color:var(--sage-dim);font-family:"Space Mono";letter-spacing:.02em}
-  .prodnote b{color:var(--sage);font-weight:700}
+  .pri small{font-size:12.5px;color:var(--slate);line-height:1.5;display:block;margin-top:5px}
+  .prodnote{font-size:12.5px;color:var(--slate-dim);font-family:"Space Mono";letter-spacing:.02em}
+  .prodnote b{color:var(--slate);font-weight:700}
 
   /* series catalog */
-  .note-pill{display:inline-block;font-size:12px;color:var(--gold);border:1px solid rgba(230,192,118,.4);border-radius:99px;padding:4px 12px;margin-top:6px}
-  .serieslist{display:flex;flex-direction:column;gap:11px;flex:1;justify-content:center;margin-top:14px}
-  .srow{display:grid;grid-template-columns:auto 1fr auto auto;align-items:center;gap:20px;background:var(--ink-2);border:1px solid var(--line);border-radius:10px;padding:15px 22px}
-  .sbadge{font-family:"Archivo";font-weight:900;font-size:12px;letter-spacing:.12em;color:var(--lime);border:1px solid rgba(200,242,60,.35);border-radius:6px;padding:9px 11px;white-space:nowrap}
-  .smid b{font-size:18px;font-weight:900}
-  .smid small{display:block;font-size:13px;color:var(--sage);margin-top:3px}
-  .facet{font-size:12px;font-weight:700;padding:5px 12px;border-radius:99px;white-space:nowrap}
-  .facet.sport{background:rgba(200,242,60,.15);color:var(--lime)}
-  .facet.gear{background:rgba(230,192,118,.17);color:var(--gold)}
-  .facet.persona{background:rgba(159,180,168,.18);color:#cdddd4}
-  .ssrc{font-family:"Space Mono";font-size:11px;color:var(--sage-dim);white-space:nowrap}
-
-  /* series — category as heading, examples on right */
+  .note-pill{display:inline-block;font-size:12px;color:var(--coral);border:1px solid rgba(255,143,107,.4);border-radius:99px;padding:4px 12px;margin-top:6px}
   .catlist{display:flex;flex-direction:column;gap:14px;flex:1;justify-content:center;margin-top:14px}
-  .catrow{display:grid;grid-template-columns:240px 1fr;gap:24px;align-items:center;background:var(--ink-2);border:1px solid var(--line);border-radius:10px;padding:20px 24px}
-  .catname{font-family:"Noto Sans TC";font-weight:900;font-size:27px;color:var(--lime);letter-spacing:.01em}
-  .catname.gear{color:var(--gold)}
-  .catname.persona{color:#cdddd4}
-  .catdesc{font-size:13.5px;color:var(--bone-2);margin-top:7px;line-height:1.45}
-  .catsrc{font-size:11px;color:var(--sage-dim);margin-top:9px;letter-spacing:.04em}
+  .catrow{display:grid;grid-template-columns:240px 1fr;gap:24px;align-items:center;background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:20px 24px;box-shadow:0 6px 18px rgba(14,46,69,0.05)}
+  .catname{font-family:"Noto Sans TC";font-weight:900;font-size:25px;color:var(--teal);letter-spacing:.01em}
+  .catdesc{font-size:13.5px;color:var(--ink-2);margin-top:7px;line-height:1.45;opacity:.85}
+  .catsrc{font-size:11px;color:var(--slate-dim);margin-top:9px;letter-spacing:.04em}
   .exwrap{display:grid;grid-template-columns:1fr 1fr;gap:14px}
-  .excard{background:var(--ink-3);border:1px solid var(--line);border-left:2px solid var(--lime);border-radius:8px;padding:14px 16px}
-  .excard.gear{border-left-color:var(--gold)}
-  .excard.persona{border-left-color:#cdddd4}
+  .excard{background:var(--paper-2);border:1px solid var(--line);border-left:2px solid var(--teal);border-radius:8px;padding:14px 16px}
   .excard b{font-size:16px;font-weight:700;display:block}
-  .excard small{font-size:12.5px;color:var(--sage);display:block;margin-top:5px;line-height:1.45}
+  .excard small{font-size:12.5px;color:var(--slate);display:block;margin-top:5px;line-height:1.45}
+
+  /* forbidden list */
+  .forbidwrap{flex:1;display:flex;flex-direction:column;justify-content:center;gap:16px}
+  .frow{display:flex;align-items:flex-start;gap:16px;background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:20px 24px;box-shadow:0 6px 18px rgba(14,46,69,0.05)}
+  .fmark{flex:0 0 34px;height:34px;border-radius:50%;background:rgba(255,143,107,.16);color:var(--coral);display:flex;align-items:center;justify-content:center;font-family:"Archivo";font-weight:900;font-size:16px}
+  .frow b{font-size:17px;font-weight:700;display:block}
+  .frow small{font-size:13.5px;color:var(--slate);line-height:1.5;display:block;margin-top:4px}
 
   /* funnel — centered, larger text */
   .funnel{flex:1;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:18px}
   .fstep{width:100%;display:flex;flex-direction:column;align-items:center;gap:10px}
-  .fbar{height:62px;border-radius:8px;display:flex;align-items:center;justify-content:center;color:var(--ink);font-weight:900;font-family:"Noto Sans TC";font-size:21px;margin:0 auto}
-  .fbar.s1{width:60%;background:var(--lime)}
-  .fbar.s2{width:45%;background:#9FD43E}
-  .fbar.s3{width:32%;background:var(--gold)}
-  .fstep .fd{font-size:17.5px;color:var(--bone-2);line-height:1.5;text-align:center;max-width:74ch}
-  .fstep .fd b{color:var(--bone)}
-
-  /* agent two-panel */
-  .agent2{flex:1;display:flex;align-items:center;gap:16px}
-  .apanel{background:var(--ink-2);border:1px solid var(--line);border-radius:12px;padding:24px;align-self:stretch;display:flex;flex-direction:column}
-  .apanel.ctx{flex:1}
-  .apanel.out{flex:1.3;border-color:var(--lime);background:linear-gradient(180deg,rgba(200,242,60,.09),var(--ink-2))}
-  .apanel .ah{font-family:"Archivo";font-weight:800;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold)}
-  .apanel.out .ah{color:var(--lime)}
-  .apanel .az{font-size:20px;font-weight:900;margin-top:6px;letter-spacing:-.01em}
-  .apanel .asub{font-size:12.5px;color:var(--sage);margin-top:3px}
-  .apanel ul{list-style:none;margin-top:15px;display:flex;flex-direction:column;gap:9px}
-  .apanel li{font-size:13.5px;color:var(--bone-2);padding-left:15px;position:relative;line-height:1.45}
-  .apanel li::before{content:"";position:absolute;left:0;top:7px;width:5px;height:5px;border-radius:50%;background:var(--sage)}
-  .apanel.out li::before{background:var(--lime)}
-  .alink{flex:0 0 110px;display:flex;flex-direction:column;align-items:center;justify-content:center}
-  .alink .ar{font-family:"Space Mono";font-size:24px;color:var(--lime)}
-  .alink .al{font-size:11px;color:var(--sage);margin-top:6px;letter-spacing:.06em;text-align:center;line-height:1.4}
-  .samenote{margin-top:18px;font-size:13px;color:var(--sage);text-align:center}
-  .samenote b{color:var(--lime)}
+  .fbar{height:62px;border-radius:8px;display:flex;align-items:center;justify-content:center;color:var(--ink-3);font-weight:900;font-family:"Noto Sans TC";font-size:21px;margin:0 auto}
+  .fbar.s1{width:60%;background:var(--teal)}
+  .fbar.s2{width:45%;background:#3FBDBA}
+  .fbar.s3{width:32%;background:var(--coral)}
+  .fstep .fd{font-size:17.5px;color:var(--ink-2);line-height:1.5;text-align:center;max-width:74ch;opacity:.85}
+  .fstep .fd b{color:var(--ink)}
 
   /* Q&A */
   .qgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;flex:1}
-  .qcard{background:var(--ink-2);border:1px solid var(--line);border-radius:12px;padding:22px;display:flex;flex-direction:column}
-  .qcard .qn{font-family:"Archivo";font-weight:900;font-size:34px;color:var(--lime);line-height:1}
+  .qcard{background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:22px;display:flex;flex-direction:column;box-shadow:0 6px 18px rgba(14,46,69,0.05)}
+  .qcard .qn{font-family:"Archivo";font-weight:900;font-size:34px;color:var(--teal);line-height:1}
   .qcard h3{font-size:18px;font-weight:900;margin-top:8px}
   .qcard .opts{margin-top:14px;display:flex;flex-direction:column;gap:9px}
-  .opt{font-size:13.5px;color:var(--bone-2);line-height:1.45;display:flex;gap:9px;align-items:flex-start}
-  .opt .box{flex:0 0 16px;height:16px;border:1.5px solid var(--sage-dim);border-radius:3px;margin-top:1px}
-  .opt b{color:var(--bone);font-weight:700}
-  .qcard .hint{margin-top:auto;padding-top:12px;font-size:11.5px;color:var(--sage-dim);border-top:1px solid var(--line)}
+  .opt{font-size:13.5px;color:var(--ink-2);line-height:1.45;display:flex;gap:9px;align-items:flex-start;opacity:.88}
+  .opt .box{flex:0 0 16px;height:16px;border:1.5px solid var(--slate-dim);border-radius:3px;margin-top:1px}
+  .opt b{color:var(--ink);font-weight:700}
+  .qcard .hint{margin-top:auto;padding-top:12px;font-size:11.5px;color:var(--slate-dim);border-top:1px solid var(--line)}
 
   /* chrome */
-  #chrome{position:absolute;left:0;right:0;bottom:0;height:46px;display:flex;align-items:center;justify-content:space-between;padding:0 84px;font-family:"Space Mono",monospace;font-size:12px;color:var(--sage-dim);letter-spacing:.08em;z-index:20}
-  #brand{color:var(--sage);font-weight:700}
-  #brand b{color:var(--lime)}
-  #count b{color:var(--bone)}
-  #progress{position:absolute;left:0;bottom:0;height:2px;background:var(--lime);transition:width .4s ease;z-index:21}
-  .hint-key{position:absolute;right:84px;bottom:54px;font-family:"Space Mono";font-size:11px;color:var(--sage-dim);z-index:18;opacity:.8}
+  #chrome{position:absolute;left:0;right:0;bottom:0;height:46px;display:flex;align-items:center;justify-content:space-between;padding:0 84px;font-family:"Space Mono",monospace;font-size:12px;color:var(--slate-dim);letter-spacing:.08em;z-index:20}
+  #brand{color:var(--slate);font-weight:700}
+  #brand b{color:var(--teal)}
+  #count b{color:var(--ink)}
+  #progress{position:absolute;left:0;bottom:0;height:2px;background:var(--teal);transition:width .4s ease;z-index:21}
+  .hint-key{position:absolute;right:84px;bottom:54px;font-family:"Space Mono";font-size:11px;color:var(--slate-dim);z-index:18;opacity:.8}
   @media (prefers-reduced-motion:reduce){.slide,.slide.active .rise{transition:none!important;animation:none!important}}
 </style>
 </head>
@@ -228,13 +202,13 @@
 
     <!-- 1 COVER -->
     <section class="slide cover active">
-      <div class="rise"><span class="tag">Short-Video Strategy · 提案討論版</span></div>
-      <h1 class="rise" style="margin-top:26px">用「人設」<span style="color:var(--lime)">帶動</span>品牌</h1>
-      <div class="rise sub">AVANT GOLF × Rose Tseng｜短影音運營企劃</div>
+      <div class="rise"><span class="tag">Account Strategy · 討論版</span></div>
+      <h1 class="rise" style="margin-top:26px">兩個帳號<span style="color:var(--teal)">，兩種語言</span></h1>
+      <div class="rise sub">AVANT GOLF｜品牌帳號 × Rose 個人帳號 分工企劃</div>
       <div class="rise meta">
-        <span><b>提案</b> 簡單廣告營銷</span>
         <span><b>對象</b> Rose 運營總監</span>
-        <span><b>版本</b> v2 討論稿 · 2026.06</span>
+        <span><b>範圍</b> avantgolf 品牌帳號重整</span>
+        <span><b>版本</b> v1 討論稿 · 2026.07</span>
       </div>
       <div class="flagline"><span></span></div>
     </section>
@@ -244,13 +218,13 @@
       <div class="topbar rise head-block"><div class="eyebrow">Roadmap<span class="zh">推進流程</span></div><div class="kicker-num">02 / 12</div></div>
       <div class="rmid rise">
         <div class="steps">
-        <div class="nstep"><div class="sn">1</div><b>Rose 回覆 Q&amp;A</b><small>方向 · 預算 · 打法選擇</small></div>
-        <div class="nstep"><div class="sn">2</div><b>建置 AI Agent</b><small>掌握品牌背景，協助逐支素材企畫</small></div>
-        <div class="nstep"><div class="sn">3</div><b>訂定行銷月曆及投放企劃</b><small>主題系列排程與預算配置</small></div>
-        <div class="nstep"><div class="sn">4</div><b>開拍 · 上線</b><small>一源多發 + 投放放大</small></div>
+        <div class="nstep"><div class="sn">1</div><b>對標拆解</b><small>hahababy／2uncle987 分工邏輯</small></div>
+        <div class="nstep"><div class="sn">2</div><b>定錨分工</b><small>品牌＝陳列／個人＝人設</small></div>
+        <div class="nstep"><div class="sn">3</div><b>訂定拍攝規格</b><small>構圖、燈光、文字規則 SOP</small></div>
+        <div class="nstep"><div class="sn">4</div><b>盤點現有貼文</b><small>分類去留，逐步替換為新邏輯</small></div>
         </div>
       </div>
-      <div class="endline rise">先把<span class="lime"> Rose 這個人 </span>立起來，品牌就有了火車頭。</div>
+      <div class="endline rise">兩個帳號各司其職，<span class="teal">才不會互相稀釋</span>。</div>
     </section>
 
     <!-- 3 THESIS -->
@@ -258,41 +232,41 @@
       <div class="aim"></div>
       <div class="topbar rise"><div class="eyebrow">Core Thesis<span class="zh">核心命題</span></div><div class="kicker-num">03 / 12</div></div>
       <div style="flex:1;display:flex;flex-direction:column;justify-content:center">
-        <h2 class="rise" style="font-size:46px;max-width:20ch">品牌帳號跑不動，是因為<span class="lime">「沒有人」</span>。</h2>
-        <p class="lead rise" style="margin-top:22px;font-size:20px">讓 Rose 當火車頭，品牌雙社群只負責承接轉化。<br>內容由一個人產出、一源多發，廣告再放大已驗證的爆款。</p>
+        <h2 class="rise" style="font-size:44px;max-width:22ch">品牌帳號長不大，是因為它<span class="teal">同時想做兩件事</span>。</h2>
+        <p class="lead rise" style="margin-top:22px;font-size:20px">敘事、人設、活動字報、商品陳列全部混在一起，觀眾滑過去分不清這是型錄還是日常。<br>把「人」交給 Rose 個人帳號，品牌帳號只負責一件事：把商品拍好看。</p>
         <div class="rise" style="display:flex;gap:40px;margin-top:40px">
-          <div><div class="mono" style="color:var(--lime);font-size:13px">01</div><div style="font-weight:700;margin-top:6px;font-size:17px">內容由 Rose 一人產</div></div>
-          <div><div class="mono" style="color:var(--lime);font-size:13px">02</div><div style="font-weight:700;margin-top:6px;font-size:17px">三類都發，golf 定錨演算法</div></div>
-          <div><div class="mono" style="color:var(--lime);font-size:13px">03</div><div style="font-weight:700;margin-top:6px;font-size:17px">廣告放大已驗證內容</div></div>
+          <div><div class="mono" style="color:var(--teal);font-size:13px">01</div><div style="font-weight:700;margin-top:6px;font-size:17px">avantgolf＝純商品攝影</div></div>
+          <div><div class="mono" style="color:var(--teal);font-size:13px">02</div><div style="font-weight:700;margin-top:6px;font-size:17px">chichun6968＝人設不變</div></div>
+          <div><div class="mono" style="color:var(--teal);font-size:13px">03</div><div style="font-weight:700;margin-top:6px;font-size:17px">兩者用 @ 標註串接，不混用</div></div>
         </div>
       </div>
     </section>
 
-    <!-- 4 CURRENT ASSETS -->
+    <!-- 4 CURRENT STATE -->
     <section class="slide">
-      <div class="topbar rise head-block"><div class="eyebrow">Current Assets<span class="zh">現況盤點 · 自有陣地</span></div><div class="kicker-num">04 / 12</div></div>
+      <div class="topbar rise head-block"><div class="eyebrow">Current State<span class="zh">avantgolf 現況盤點</span></div><div class="kicker-num">04 / 12</div></div>
       <div class="grid3">
         <div class="card rise">
-          <div class="ct">Rose IG · 主力</div>
-          <div class="cz">@chichun6968</div>
-          <div class="cmono">Rose Tseng · AVANT Sports Style Director</div>
-          <div class="stat-row"><div class="stat"><b>1萬</b><small>粉絲</small></div><div class="stat"><b>326</b><small>貼文</small></div></div>
-          <ul><li>人設骨架已立：穿搭 · golf · 瑜珈提拉</li><li>精選分類即內容雛形</li></ul>
-          <div class="pain"><b>痛點：</b>近期觸及掉到 2.5K–5.7K，動能下滑</div>
+          <div class="ct">帳號規模</div>
+          <div class="cz">@avantgolf</div>
+          <div class="cmono">亞凡高爾夫・since 2022</div>
+          <div class="stat-row"><div class="stat"><b>2721</b><small>粉絲</small></div><div class="stat"><b>262</b><small>貼文</small></div></div>
+          <ul><li>Highlight 已有：精選優惠、每月公休、Foresight模擬器</li></ul>
+          <div class="pain"><b>觀察：</b>陳列與日常/活動內容混雜，型錄感被稀釋</div>
         </div>
         <div class="card rise">
-          <div class="ct">官網 · 彈藥庫</div>
-          <div class="cz">avantgolf8888</div>
-          <div class="cmono">SHOPLINE · 左營文府路實體店</div>
-          <ul><li>自有品牌 VANBO 凡寶</li><li>adidas / Callaway / OMNIX 代理代購</li><li>室內模擬器「高爾夫補習班」</li></ul>
-          <div class="pain"><b>強項：</b>商品題材充足，且有固定拍攝場域</div>
+          <div class="ct">現有內容組成</div>
+          <div class="cz">三種類型並存</div>
+          <div class="cmono">商品照 / 門市日常 / 活動字報</div>
+          <ul><li>商品平拍與上身照（該保留、強化）</li><li>總監日常、店長互動（該移去個人帳號）</li><li>活動字報疊字（僅檔期公告可留）</li></ul>
+          <div class="pain"><b>問題：</b>三種調性互相打架，帳號沒有統一辨識度</div>
         </div>
         <div class="card rise">
-          <div class="ct">品牌 FB</div>
-          <div class="cz">AVANT GOLF</div>
-          <div class="cmono">2,498 追蹤 · 支線 CR by Rose Chun</div>
-          <ul><li>已試 Rose：總監 vs 店長、下場教學</li><li>檔期促銷 / 抽獎都有在做</li></ul>
-          <div class="pain"><b>痛點：</b>互動低、品牌帳號自己硬轉</div>
+          <div class="ct">目標狀態</div>
+          <div class="cz">純陳列型錄</div>
+          <div class="cmono">對標 hahababyselect</div>
+          <ul><li>統一燈光／背景／構圖語言</li><li>只留商品本體、細節、上身效果</li><li>敘事與人設完全移交 Rose 個人帳號</li></ul>
+          <div class="pain"><b>目標：</b>滑起來像一本型錄，不像動態時報</div>
         </div>
       </div>
     </section>
@@ -301,142 +275,119 @@
     <section class="slide">
       <div class="topbar rise head-block"><div class="eyebrow">Diagnosis<span class="zh">現況診斷 · 阻礙與解法</span></div><div class="kicker-num">05 / 12</div></div>
       <div class="rows">
-        <div class="drow rise"><div class="prob">品牌沒有人設帶動<span>FB 已試 Rose，但互動低</span></div><div class="arrow">→</div><div class="sol">改成 <b>Rose IG 當火車頭</b>，品牌帳號只負責承接</div></div>
-        <div class="drow rise"><div class="prob">golf TA 偏少<span>主力觀看僅 1 萬上下</span></div><div class="arrow">→</div><div class="sol">用 <b>生活 / 穿搭擴大漏斗</b>，再把人導進 golf</div></div>
-        <div class="drow rise"><div class="prob">雙社群跑不動<span>品牌帳號缺燃料、各自為政</span></div><div class="arrow">→</div><div class="sol">內容 <b>統一由 Rose 產，一源多發</b>到雙社群</div></div>
+        <div class="drow rise"><div class="prob">陳列與敘事混用<span>同帳號同時放商品照與總監日常</span></div><div class="arrow">→</div><div class="sol">日常／人設內容<b>全部移交</b> Rose 個人帳號</div></div>
+        <div class="drow rise"><div class="prob">視覺不統一<span>燈光、背景、構圖各拍各的</span></div><div class="arrow">→</div><div class="sol">建立<b>固定拍攝 SOP</b>，同一套燈光背景反覆使用</div></div>
+        <div class="drow rise"><div class="prob">活動字報感過重<span>疊字報型文案偏廣告腔</span></div><div class="arrow">→</div><div class="sol">僅<b>明確檔期公告</b>可用字報，其餘回歸商品本體</div></div>
       </div>
     </section>
 
     <!-- 6 BENCHMARKS -->
     <section class="slide">
-      <div class="topbar rise head-block"><div class="eyebrow">Benchmarks<span class="zh">對標拆解 · 偷公式（點擊開啟）</span></div><div class="kicker-num">06 / 12</div></div>
+      <div class="topbar rise head-block"><div class="eyebrow">Benchmarks<span class="zh">對標拆解 · 分工公式</span></div><div class="kicker-num">06 / 12</div></div>
       <div class="grid2">
         <div class="card bm rise">
-          <a class="bmlink" href="https://www.youtube.com/@睿睿不花湖" target="_blank" rel="noopener">運動面 · 設備面 <span class="ext">↗</span></a>
-          <div class="who">睿睿不花湖（YouTube）</div>
-          <div class="views">2.71萬訂閱 · 爆款 11–23萬觀看</div>
-          <ul><li>痛點 / 揭錯式開場：「90% 的人都做錯」</li><li>一支只講一招，內容好懂</li><li>設備綁個人實測：「我都用什麼」</li></ul>
-          <div class="steal"><b>平移 golf：</b>跑步技巧 → 揮桿 / 第一次下場；跑鞋開箱 → VANBO / adidas / OMNIX 帶貨</div>
+          <a class="bmlink" href="https://www.instagram.com/hahababyselect/" target="_blank" rel="noopener">品牌帳號 · 純陳列 <span class="ext">↗</span></a>
+          <div class="who">hahababyselect（Instagram）</div>
+          <div class="views">16.1萬粉 · 2253 則貼文</div>
+          <ul><li>畫面 100% 是商品：平拍、上身、色系齊全</li><li>同一套燈光背景反覆使用，辨識度極高</li><li>文字極簡：只有品名、材質、尺寸</li></ul>
+          <div class="steal"><b>平移 avantgolf：</b>球衣／球具平拍＋上身＋細節特寫，燈光背景固定成一套模板</div>
         </div>
         <div class="card bm rise">
-          <a class="bmlink" href="https://www.instagram.com/u66_com/" target="_blank" rel="noopener">人設面 <span class="ext">↗</span></a>
-          <div class="who">u66_com · Lisa Sung（Instagram）</div>
-          <div class="views">19.3萬粉 · Reels 20–86萬觀看</div>
-          <ul><li>創業闆娘日常帶單一品牌（300° STEAK）</li><li>生活（旅遊 / 生日 / 興趣）＋ 創業幕後</li><li>先紅「人」，品牌自然長在她身上</li></ul>
-          <div class="steal"><b>給 Rose：</b>別一開始猛打教學，先把「運動總監這個人」立起來，golf 自然長出來</div>
+          <a class="bmlink" href="https://www.instagram.com/2uncle987/" target="_blank" rel="noopener">個人帳號 · 人帶品牌 <span class="ext">↗</span></a>
+          <div class="who">2uncle987・嘎嫂二伯（Instagram）</div>
+          <div class="views">76.2萬粉 · 4477 則貼文</div>
+          <ul><li>生活日常、育兒、夫妻互動、幕後花絮</li><li>品牌只在需要時自然帶入，不喧賓奪主</li><li>先讓「人」立起來，品牌長在人身上</li></ul>
+          <div class="steal"><b>對應 Rose：</b>chichun6968 維持原有 Golf／Pilates／Active Fashion 三大標籤不變</div>
         </div>
       </div>
     </section>
 
-    <!-- 7 GOAL & TRAIN -->
+    <!-- 7 TWO ENGINES MODEL -->
     <section class="slide">
-      <div class="topbar rise head-block"><div class="eyebrow">Goal &amp; Strategy<span class="zh">企劃目標 · 火車頭模型</span></div><div class="kicker-num">07 / 12</div></div>
+      <div class="topbar rise head-block"><div class="eyebrow">Two-Engine Model<span class="zh">雙引擎分工模型</span></div><div class="kicker-num">07 / 12</div></div>
       <div class="train">
         <div class="flow3 rise">
-          <div class="loco"><div class="lt">Engine</div><div class="lz">Rose IG</div><div class="ls">人設火車頭 · 內容源頭</div></div>
-          <div class="lk"><div class="ar">→</div><div class="lkl">分發 · 承接</div></div>
-          <div class="colnodes">
-            <div class="node"><b>品牌 IG</b><small>風格分發</small></div>
-            <div class="node"><b>品牌 FB</b><small>在地社群</small></div>
-          </div>
-          <div class="lk"><div class="ar">→</div><div class="lkl">轉化</div></div>
-          <div class="colnodes">
-            <div class="node"><b>官網</b><small>下單</small></div>
-            <div class="node"><b>門市</b><small>到店</small></div>
-            <div class="node"><b>模擬器</b><small>預約體驗</small></div>
-          </div>
+          <div class="loco alt"><div class="lt">Persona Engine</div><div class="lz">chichun6968</div><div class="ls">人設・不變・持續帶流量</div></div>
+          <div class="lk"><div class="ar">⇄</div><div class="lkl">@ 標註<br>互相導流</div></div>
+          <div class="loco"><div class="lt">Catalog Engine</div><div class="lz">avantgolf</div><div class="ls">純陳列・型錄化</div></div>
         </div>
         <div class="kpi rise">
-          <div class="step"><div class="n">PHASE 1</div><b>立人設</b><small>粉絲成長 · 完播率</small></div>
-          <div class="step"><div class="n">PHASE 2</div><b>擴漏斗</b><small>觸及 · 互動 · 追蹤</small></div>
-          <div class="step"><div class="n">PHASE 3</div><b>做轉化</b><small>官網單 · 門市 · 模擬器預約 · 合作邀約</small></div>
+          <div class="step"><div class="n">PERSONA</div><b>負責帶人進來</b><small>敘事、人設、生活、藏鏡人系列</small></div>
+          <div class="step"><div class="n">CATALOG</div><b>負責承接成交</b><small>商品攝影、陳列、材質細節</small></div>
+          <div class="step"><div class="n">交界</div><b>只用 @ 標註串接</b><small>不共用分鏡邏輯、不混用文案調性</small></div>
         </div>
-        <div class="pubnote rise"><b>發布原則：</b>Rose 貼文用 <b>@品牌帳號</b>標註即可（不走協作貼文）；若採協作貼文，必須搭配廣告推動、堆高貼文分數。</div>
+        <div class="pubnote rise"><b>分工原則：</b>Rose 個人帳號的短影音主題系統（人設面/運動面/設備面）不套用到品牌帳號；品牌帳號的商品攝影規格也不進 Rose 個人帳號。</div>
       </div>
     </section>
 
-    <!-- 8 CONTENT MIX -->
+    <!-- 8 CATALOG SPEC -->
     <section class="slide">
-      <div class="topbar rise head-block"><div class="eyebrow">Content Mix<span class="zh">內容配比 · 製作原則</span></div><div class="kicker-num">08 / 12</div></div>
+      <div class="topbar rise head-block"><div class="eyebrow">Catalog Spec<span class="zh">avantgolf 商品攝影規格</span></div><div class="kicker-num">08 / 12</div></div>
       <div class="mixwrap">
         <div class="rise">
-          <div class="mixbar">
-            <div class="seg golf"><div class="pct">60–80%</div><div class="lab">Golf 高爾夫</div></div>
-            <div class="seg yoga"><div class="pct">20–30%</div><div class="lab">瑜珈 · 提拉皮斯</div></div>
-            <div class="seg talk"><div class="pct">10%</div><div class="lab">雜談</div></div>
+          <div class="enginebar">
+            <div class="seg brand"><div class="pct">靜態</div><div class="lab">平拍 + 上身，資訊性文字</div></div>
+            <div class="seg persona"><div class="pct">動態</div><div class="lab">細節滑過、多角度轉場，無口白敘事</div></div>
           </div>
         </div>
-        <div class="mixcap rise">三類都會發，但用主題與互動引導，<b>讓演算法把帳號定錨在 golf</b>。</div>
+        <div class="mixcap rise">不論圖片或影片，<b>畫面主體永遠是商品本身</b>，人只在需要展示上身效果時入鏡。</div>
         <div class="principles rise">
-          <div class="pri"><div class="pn">01</div><b>封面 / 開場一致</b><small>約 90% 貼文，短片封面與開場視覺維持一致（如字幕呈現風格），建立辨識度</small></div>
-          <div class="pri"><div class="pn">02</div><b>內容通俗易懂</b><small>內容對 TA 不艱澀、門檻放低——把專業講成白話</small></div>
-          <div class="pri"><div class="pn">03</div><b>演算法定錨 golf</b><small>三類都發，用題材與互動把帳號押在 golf</small></div>
+          <div class="pri"><div class="pn">01</div><b>陳列邏輯</b><small>平拍／上身／情境／色系牆，擇一或組合，維持同一套語言</small></div>
+          <div class="pri"><div class="pn">02</div><b>構圖與燈光統一</b><small>固定背景色與燈光風格，帳號滑起來像同一本型錄</small></div>
+          <div class="pri"><div class="pn">03</div><b>細節特寫必備</b><small>每組至少 1–2 個材質／工藝特寫鏡位</small></div>
         </div>
-        <div class="prodnote rise"><b>製作：</b>短影音代操剪輯，藏鏡人協助執行。</div>
+        <div class="prodnote rise"><b>與 Rose 個人帳號系統分開運作，不共用欄位、不共用產出流程。</b></div>
       </div>
     </section>
 
-    <!-- 9 SERIES -->
+    <!-- 9 SERIES CATALOG -->
     <section class="slide">
-      <div class="topbar rise head-block"><div class="eyebrow">Content Series<span class="zh">主題系列 · 內容框架</span></div><div class="kicker-num">09 / 12</div></div>
-      <div class="rise"><span class="note-pill">以面向為類別，右側為範例主題系列；單支細項待 Rose Q&amp;A 後鎖定</span></div>
+      <div class="topbar rise head-block"><div class="eyebrow">Shot Catalog<span class="zh">拍攝主題範例</span></div><div class="kicker-num">09 / 12</div></div>
+      <div class="rise"><span class="note-pill">以陳列邏輯為類別，右側為範例拍法</span></div>
       <div class="catlist">
         <div class="catrow rise">
-          <div class="catleft"><div class="catname">運動面</div><div class="catdesc">把專業講成白話的 golf 教學</div><div class="catsrc mono">對標 · 睿睿不花湖</div></div>
+          <div><div class="catname">平拍陳列</div><div class="catdesc">單品或成套商品的俯拍構圖</div><div class="catsrc mono">對標 · hahababyselect</div></div>
           <div class="exwrap">
-            <div class="excard"><b>第一次下場</b><small>新手最焦慮的問題，一支解一個</small></div>
-            <div class="excard"><b>一招立刻有感</b><small>一支一個小訣竅，馬上就能用</small></div>
+            <div class="excard"><b>單品平拍</b><small>球衣、球帽單獨置中，統一背景色</small></div>
+            <div class="excard"><b>色系陳列牆</b><small>同色系多件商品並排，強調系列感</small></div>
           </div>
         </div>
         <div class="catrow rise">
-          <div class="catleft"><div class="catname gear">設備面</div><div class="catdesc">綁個人實測的開箱與帶貨</div><div class="catsrc mono">對標 · 睿睿不花湖</div></div>
+          <div><div class="catname">上身情境</div><div class="catdesc">模特兒上身，展示穿搭效果</div><div class="catsrc mono">對標 · hahababyselect</div></div>
           <div class="exwrap">
-            <div class="excard gear"><b>總監私物開箱</b><small>VANBO / adidas / OMNIX 實搭</small></div>
-            <div class="excard gear"><b>平價 vs 高價</b><small>對比評測，幫 TA 決策</small></div>
+            <div class="excard"><b>球場情境上身</b><small>球場實景穿搭，展現機能與版型</small></div>
+            <div class="excard"><b>棚拍上身</b><small>固定背景棚拍，凸顯剪裁細節</small></div>
           </div>
         </div>
         <div class="catrow rise">
-          <div class="catleft"><div class="catname persona">人設面</div><div class="catdesc">用生活帶人進來、擴大漏斗</div><div class="catsrc mono">對標 · u66 Lisa</div></div>
+          <div><div class="catname">材質特寫</div><div class="catdesc">工藝、面料、五金細節鏡位</div><div class="catsrc mono">品牌信任感來源</div></div>
           <div class="exwrap">
-            <div class="excard persona"><b>運動總監的一天</b><small>vlog 感生活日常</small></div>
-            <div class="excard persona"><b>店裡日常</b><small>總監 vs 店長系列</small></div>
+            <div class="excard"><b>面料特寫</b><small>止汗帶、機能布料的紋理與透氣孔</small></div>
+            <div class="excard"><b>五金/縫線特寫</b><small>球標、拉鍊、縫線工藝放大展示</small></div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- 10 ADS -->
+    <!-- 10 FORBIDDEN -->
     <section class="slide">
-      <div class="topbar rise head-block"><div class="eyebrow">Paid Media<span class="zh">廣告投放 · Meta 為主</span></div><div class="kicker-num">10 / 12</div></div>
+      <div class="topbar rise head-block"><div class="eyebrow">Guardrails<span class="zh">品牌帳號禁止事項</span></div><div class="kicker-num">10 / 12</div></div>
+      <div class="forbidwrap">
+        <div class="frow rise"><div class="fmark">✕</div><div><b>不出現 Rose 或藏鏡人對話互動畫面</b><small>人設與敘事一律留在 chichun6968，品牌帳號只呈現商品</small></div></div>
+        <div class="frow rise"><div class="fmark">✕</div><div><b>不用活動疊字報式文案</b><small>如「限時優惠」大字報，除非是明確檔期公告</small></div></div>
+        <div class="frow rise"><div class="fmark">✕</div><div><b>不與敘事型短影音混用分鏡邏輯</b><small>商品攝影規格（第十三節）與個人帳號主題系統（第三～十二節）分開運作</small></div></div>
+      </div>
+    </section>
+
+    <!-- 11 WORKFLOW -->
+    <section class="slide">
+      <div class="topbar rise head-block"><div class="eyebrow">Workflow<span class="zh">建檔與確認流程</span></div><div class="kicker-num">11 / 12</div></div>
       <div class="funnel">
-        <div class="fstep rise"><div class="fbar s1">觸及</div><div class="fd"><b>用自然成效篩爆款</b>，跑 2–4 天有起色，馬上用廣告流量接續擴大；以 Rose IG 素材為主</div></div>
-        <div class="fstep rise"><div class="fbar s2">興趣</div><div class="fd">導 <b>追蹤 / 私訊</b>，把看過的人沉澱進雙社群與名單</div></div>
-        <div class="fstep rise"><div class="fbar s3">轉化</div><div class="fd">品牌帳號 <b>再行銷</b>：官網下單 · 門市 · 模擬器預約 · 合作邀約</div></div>
+        <div class="fstep rise"><div class="fbar s1">企畫</div><div class="fd">依商品彈藥庫排出<b>拍攝清單</b>，標明陳列邏輯與特寫需求</div></div>
+        <div class="fstep rise"><div class="fbar s2">確認</div><div class="fd">內容先給 <b>Rose 看過取得同意</b>，才進入拍攝或建檔</div></div>
+        <div class="fstep rise"><div class="fbar s3">執行</div><div class="fd">拍攝／剪輯完成後<b>上傳品牌帳號</b>，不與個人帳號內容交叉發布</div></div>
       </div>
-      <div class="rise"><span class="note-pill">投放預算待 Q2 確認後配置</span></div>
-    </section>
-
-    <!-- 11 AI AGENT -->
-    <section class="slide">
-      <div class="topbar rise head-block"><div class="eyebrow">AI Assistant<span class="zh">AI 素材企畫助手</span></div><div class="kicker-num">11 / 12</div></div>
-      <h2 class="rise" style="font-size:32px;margin-top:4px;margin-bottom:12px">建置 AI Agent <span style="color:var(--sage);font-weight:700;font-size:18px">· 逐支素材企畫助手</span></h2>
-      <p class="lead rise" style="font-size:17px;margin-bottom:18px;max-width:92ch">在<b style="color:var(--lime);font-weight:700">掌握品牌背景</b>的前提下，協助 Rose 逐支處理短影音素材的企畫細節——和目前處理各品牌 FB／Google 廣告素材是同一套邏輯。</p>
-      <div class="agent2 rise">
-        <div class="apanel ctx">
-          <div class="ah">設定一次</div>
-          <div class="az">品牌背景</div>
-          <div class="asub">Agent 先讀懂、之後沿用</div>
-          <ul><li>人設設定（Rose 的調性 / 口吻）</li><li>品牌規範與商品線</li><li>對標公式（睿睿 / u66）</li><li>已驗證爆款資料</li></ul>
-        </div>
-        <div class="alink"><div class="ar">→</div><div class="al">在此前提下<br>逐支產出</div></div>
-        <div class="apanel out">
-          <div class="ah">每支素材 · 校正</div>
-          <div class="az">單支企畫細節</div>
-          <div class="asub">Rose 輸入主題 → Agent 出草稿 → Rose 校正</div>
-          <ul><li>主題與切入角度（對應系列）</li><li>白話腳本（通俗易懂、不艱澀）</li><li>封面 + 開場視覺一致（字幕風格）</li><li>標籤與互動引導（定錨 golf）</li><li>發布與投放建議</li></ul>
-        </div>
-      </div>
-      <div class="samenote rise">邏輯同 Dan 現行各品牌 <b>FB／Google 廣告素材</b>的處理流程，差別只在換成短影音腳本。</div>
+      <div class="rise"><span class="note-pill">上傳／建檔前一律先給 Rose 看過、取得同意才動手</span></div>
     </section>
 
     <!-- 12 Q&A -->
@@ -444,37 +395,35 @@
       <div class="topbar rise head-block"><div class="eyebrow">For Rose<span class="zh">給 Rose 的討論題</span></div><div class="kicker-num">12 / 12</div></div>
       <div class="qgrid">
         <div class="qcard rise">
-          <div class="qn">Q1</div><h3>你期望的方向？</h3>
+          <div class="qn">Q1</div><h3>陳列風格偏好？</h3>
           <div class="opts">
-            <div class="opt"><span class="box"></span><div><b>(a)</b> 懂時尚的運動總監（穿搭 / 生活為主，golf 是亮點）</div></div>
-            <div class="opt"><span class="box"></span><div><b>(b)</b> golf 圈專業 KOL（教學 / 實力為主，穿搭是包裝）</div></div>
-            <div class="opt"><span class="box"></span><div><b>(c)</b> 兩者都要，偏向：＿＿＿</div></div>
+            <div class="opt"><span class="box"></span><div><b>(a)</b> 純棚拍平拍，走簡潔型錄感</div></div>
+            <div class="opt"><span class="box"></span><div><b>(b)</b> 球場情境上身為主，強調真實使用場景</div></div>
+            <div class="opt"><span class="box"></span><div><b>(c)</b> 兩者混合，依商品類型決定</div></div>
           </div>
-          <div class="hint">補充：有沒有不想拍 / 不擅長的內容？</div>
+          <div class="hint">補充：是否需要固定一位模特兒／店員上身？</div>
         </div>
         <div class="qcard rise">
-          <div class="qn">Q2</div><h3>每月預算？</h3>
+          <div class="qn">Q2</div><h3>拍攝批次頻率？</h3>
           <div class="opts">
-            <div class="opt"><span class="box"></span><div><b>製作</b> 1萬以下 / 1–3萬 / 3萬+</div></div>
-            <div class="opt"><span class="box"></span><div><b>投放</b> 1萬以下 / 1–3萬 / 3–5萬 / 5萬+</div></div>
-            <div class="opt"><span class="box"></span><div><b>回收</b> 粉絲 / 官網單 / 門市 / 模擬器 / 合作</div></div>
+            <div class="opt"><span class="box"></span><div><b>頻率</b> 每週 / 每兩週 / 每月一次大批量</div></div>
+            <div class="opt"><span class="box"></span><div><b>場地</b> 門市棚拍 / 模擬器空間 / 戶外球場</div></div>
           </div>
-          <div class="hint">製作與投放預算分開抓</div>
+          <div class="hint">決定固定拍攝日，方便排產出節奏</div>
         </div>
         <div class="qcard rise">
-          <div class="qn">Q3</div><h3>三面向打法（可複選）</h3>
+          <div class="qn">Q3</div><h3>現有貼文如何處理？</h3>
           <div class="opts">
-            <div class="opt"><span class="box"></span><div><b>運動</b> 第一次下場 / 揭錯式 / 一招小訣竅</div></div>
-            <div class="opt"><span class="box"></span><div><b>設備</b> VANBO 實搭 / 平價vs高價 / 總監私物</div></div>
-            <div class="opt"><span class="box"></span><div><b>人設</b> 總監的一天 / 生活旅遊 / 店裡日常</div></div>
+            <div class="opt"><span class="box"></span><div><b>(a)</b> 保留商品照，逐步淘汰日常/字報類</div></div>
+            <div class="opt"><span class="box"></span><div><b>(b)</b> 全部重拍，帳號視覺重新開始</div></div>
           </div>
-          <div class="hint">標出「最想先做」的那一項</div>
+          <div class="hint">標出「最想先處理」的貼文類型</div>
         </div>
       </div>
     </section>
 
     <div id="chrome">
-      <span id="brand">AVANT GOLF <b>×</b> Rose · 短影音運營企劃</span>
+      <span id="brand">AVANT GOLF <b>×</b> 雙帳號分工企劃</span>
       <span id="count"><b id="cur">01</b> / 12</span>
     </div>
     <div id="progress"></div>
@@ -497,7 +446,6 @@
     else if(['ArrowLeft','ArrowUp','PageUp'].includes(e.key)){e.preventDefault();prev()}
     else if(e.key==='Home'){show(0)} else if(e.key==='End'){show(slides.length-1)}
   });
-  // wheel / trackpad — one slide per gesture; click does NOT change page
   let wheelLock=false;
   window.addEventListener('wheel',e=>{
     if(wheelLock||Math.abs(e.deltaY)<6)return;
@@ -505,7 +453,6 @@
     if(e.deltaY>0)next();else prev();
     setTimeout(()=>wheelLock=false,650);
   },{passive:true});
-  // scale fixed 1280x720 stage to viewport
   const stage=document.getElementById('stage');const scaler=document.getElementById('scaler');
   function fit(){
     const s=Math.min(window.innerWidth/1280,window.innerHeight/720);
